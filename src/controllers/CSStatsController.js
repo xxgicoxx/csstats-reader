@@ -8,9 +8,9 @@ class CSStatsController {
   /**
    * Parse csstats.dat
    *
-   * @param {string} path csstats.dat path
+   * @param {string} path Path
    *
-   * @returns {Promise} return Promise
+   * @returns {Promise} Promise
    */
   async parse(path) {
     return this._service.parse(path);
@@ -19,12 +19,13 @@ class CSStatsController {
   /**
    * Parse csstats.dat and return top 10
    *
-   * @param {string} path csstats.dat path
+   * @param {string} path Path
+   * @param {string} [parameter = 'kills'] Parameter of top 10
    *
-   * @returns {Promise} return Promise
+   * @returns {Promise} Promise
    */
-  async top(path) {
-    return this._service.top(path);
+  async top(path, parameter = 'kills') {
+    return this._service.top(path, parameter);
   }
 }
 
