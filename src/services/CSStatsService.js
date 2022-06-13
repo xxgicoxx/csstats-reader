@@ -30,7 +30,7 @@ class CSStats {
   }
 
   async top(parameter = 'kills') {
-    const stats = await this.parse();
+    const stats = await this.players();
 
     const players = stats.sort((a, b) => ((a[parameter] < b[parameter]) ? 1 : -1));
     const length = players.length >= 10 ? 9 : players.length;
