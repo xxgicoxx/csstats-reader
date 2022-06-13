@@ -5,37 +5,12 @@ const fsp = fs.promises;
 const RANKS_VERSION = 11;
 
 class CSStats {
-  toEntity(data, offset) {
-    const name = data.readBytes(offset);
-    const newOffset = data.readUInt16LE();
-
-    const entity = {
-      name,
-      unique: data.readBytes(newOffset),
-      tks: data.readUInt32LE(),
-      dmg: data.readUInt32LE(),
-      deaths: data.readUInt32LE(),
-      kills: data.readInt32LE(),
-      shots: data.readUInt32LE(),
-      hits: data.readUInt32LE(),
-      hs: data.readUInt32LE(),
-      bDefusions: data.readUInt32LE(),
-      bDefused: data.readUInt32LE(),
-      bPlants: data.readUInt32LE(),
-      bExplosions: data.readUInt32LE(),
-    };
-
-    entity.bodyHits = new Array(9);
-
-    for (let i = 0, len = entity.bodyHits.length; i < len; i += 1) {
-      entity.bodyHits[i] = data.readUInt32LE();
-    }
-
-    return entity;
+  constructor(config = {}) {
+    this.config = config;
   }
 
-  async parse(path) {
-    const file = await fsp.readFile(path);
+  async players() {
+    const file = await fsp.readFile(this.config.path);
     const data = new BufferWrapper(file);
     const entities = [];
 
@@ -54,13 +29,41 @@ class CSStats {
     return entities;
   }
 
-  async top(path, parameter) {
-    const stats = await this.parse(path);
+  async top(parameter = 'kills') {
+    const stats = await this.parse();
 
     const players = stats.sort((a, b) => ((a[parameter] < b[parameter]) ? 1 : -1));
     const length = players.length >= 10 ? 9 : players.length;
 
     return players.slice(0, length);
+  }
+
+  toEntity(data, offset) {
+    const name = data.readBytes(offset);
+    const newOffset = data.readUInt16LE();
+
+    const entity = {
+      name,
+      unique: data.readBytes(newOffset),
+      tks: data.readUInt32LE(),
+      dmg: data.readUInt32LE(),
+      deaths: data.readUInt32LE(),
+      kills: data.readInt32LE(),
+      shots: data.readUInt32LE(),
+      hits: data.readUInt32LE(),
+      hs: data.readUInt32LE(),
+      bodyHits: new Array(9),
+      bDefusions: data.readUInt32LE(),
+      bDefused: data.readUInt32LE(),
+      bPlants: data.readUInt32LE(),
+      bExplosions: data.readUInt32LE(),
+    };
+
+    for (let i = 0; i < entity.bodyHits.length; i += 1) {
+      entity.bodyHits[i] = data.readUInt32LE();
+    }
+
+    return entity;
   }
 }
 

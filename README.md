@@ -17,11 +17,13 @@ npm install csstats-reader
 ```javascript
 const CSStats = require('csstats-reader');
 
-const csstats = new CSStats();
+const csstats = new CSStats({
+  path: 'C:/Users/giova/Desktop/Counter-Strike 1.6/cstrike/addons/amxmodx/data/csstats.dat',
+});
 
 (async () => {
-    const data = await csstats.parse(path.resolve(__dirname, './data/csstats.dat'));
-    console.log(data);
+  const data = await csstats.players();
+  console.log(data);
 })();
 ```
 
