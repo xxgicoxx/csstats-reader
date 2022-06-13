@@ -18,7 +18,7 @@ npm install csstats-reader
 const CSStats = require('csstats-reader');
 
 const csstats = new CSStats({
-  path: 'C:/Users/giova/Desktop/Counter-Strike 1.6/cstrike/addons/amxmodx/data/csstats.dat',
+  path: 'C:/Users/giovani/Desktop/Counter-Strike 1.6/cstrike/addons/amxmodx/data/csstats.dat',
 });
 
 (async () => {
