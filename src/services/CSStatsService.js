@@ -53,6 +53,15 @@ class CSStats {
 
     return entities;
   }
+
+  async top(path) {
+    const stats = await this.parse(path);
+
+    const players = stats.sort((a, b) => ((a.kills < b.kills) ? 1 : -1));
+    const length = players.length >= 10 ? 9 : players.length;
+
+    return players.slice(0, length);
+  }
 }
 
 module.exports = CSStats;
