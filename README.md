@@ -1,23 +1,35 @@
-node-csstats
-==================
+# csstats-reader
+Node.js package for parse AMX Mod X Stats File.
 
-A result of procrastinating during a Master's thesis and nostalgic feelings.
+<p align="center">
+  <img src="assets/imgs/csstats.png">
+</p>
 
-Parse a AMX MOD X ```csstats.dat``` file to JS objects.
+# Prerequisites
+* [Node.js](https://nodejs.org/en/)
 
-## Usage
+# Installation
+````
+npm install csstats-reader
+````
 
+# Example
+```javascript
+const CSStats = require('csstats-reader');
+
+const csstats = new CSStats();
+
+(async () => {
+    const data = await csstats.parse(path.resolve(__dirname, './data/csstats.dat'));
+    console.log(data);
+})();
 ```
-var csstats = require('csstats');
 
-csstats.parse('./path/to/csstats.dat', function (entityList) {
-  console.log(entityList); // JS object with stats
-  console.log(entityList[0].name); // Nick of the top player.
-});
-```
+# Built With
+* [Node.js](https://nodejs.org/en/)
 
-## Installation
+# Authors
+* [xxgicoxx](https://github.com/xxgicoxx)
 
-```
-npm install csstats
-```
+# Acknowledgments
+* [FlatIcon](https://www.flaticon.com/)

@@ -1,1 +1,3 @@
-module.exports = require('./lib/csstats');
+const { CSStatsController } = require('./src/controllers');
+
+module.exports = CSStatsController;

@@ -1,12 +1,31 @@
 {
-  "name": "csstats",
-  "version": "0.1.0",
-  "description": "Parse AMX Mod X Stats File",
+  "name": "csstats-reader",
+  "displayName": "csstats-reader",
+  "version": "1.0.0",
+  "description": "Node.js package for parse AMX Mod X Stats File.",
+  "author": "Giovani de Oliveira <giovanioliveira@outlook.com.br>",
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "repository": "https://github.com/mikaelbr/node-csstats.git",
-  "author": "Mikael Brevik",
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xxgicoxx/csstats-reader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xxgicoxx/csstats-reader/issues"
+  },
+  "homepage": "https://github.com/xxgicoxx/csstats-reader#readme",
+  "keywords": [
+    "csstats-reader",
+    "parse",
+    "csstats",
+    "reader"
+  ],
+  "devDependencies": {
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4"
+  }
 }

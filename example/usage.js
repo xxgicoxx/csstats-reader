@@ -1,7 +1,9 @@
-var csstats = require('../index'),
-    path = require('path');
+const CSStats = require('../index');
+const path = require('path');
 
-csstats.parse(path.resolve(__dirname, './data/csstats.dat'), function (entityList) {
-  console.log(entityList);
-  console.log(entityList[0].name);
-});
+const csstats = new CSStats();
+
+(async () => {
+    const data = await csstats.parse(path.resolve(__dirname, './data/csstats.dat'));
+    console.log(data);
+})();
