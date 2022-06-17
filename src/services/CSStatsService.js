@@ -4,7 +4,7 @@ const BufferWrapper = require('../utils/buffer-wrapper');
 const fsp = fs.promises;
 const RANKS_VERSION = 11;
 
-class CSStats {
+class CSStatsService {
   constructor(config = {}) {
     this.config = config;
   }
@@ -67,4 +67,4 @@ class CSStats {
   }
 }
 
-module.exports = CSStats;
+module.exports = CSStatsService;
