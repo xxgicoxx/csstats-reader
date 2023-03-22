@@ -5,6 +5,9 @@ Node.js package for parse AMX Mod X Stats File.
   <img src="assets/imgs/csstats.png">
 </p>
 
+# Features
+* Parse AMX Mod X Stats File
+
 # Prerequisites
 * [Node.js](https://nodejs.org/en/)
 

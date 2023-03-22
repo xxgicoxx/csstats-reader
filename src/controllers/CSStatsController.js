@@ -25,7 +25,7 @@ class CSStatsController {
    *
    * @returns {Promise} Promise
    */
-  async top(parameter = 'kills') {
+  async top(parameter) {
     return this._service.top(parameter);
   }
 }

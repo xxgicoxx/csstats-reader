@@ -1,8 +1,7 @@
 const fs = require('fs');
-const BufferWrapper = require('../utils/buffer-wrapper');
+const { BufferWrapper, constants } = require('../utils');
 
 const fsp = fs.promises;
-const RANKS_VERSION = 11;
 
 class CSStatsService {
   constructor(config = {}) {
@@ -14,8 +13,8 @@ class CSStatsService {
     const data = new BufferWrapper(file);
     const entities = [];
 
-    if (data.readInt16LE() !== RANKS_VERSION) {
-      throw new Error('Bad stats version');
+    if (data.readInt16LE() !== constants.RANKS_VERSION) {
+      throw new Error(constants.BAD_STATS_VERSION);
     }
 
     let num = data.readUInt16LE();
@@ -29,7 +28,7 @@ class CSStatsService {
     return entities;
   }
 
-  async top(parameter = 'kills') {
+  async top(parameter = constants.KILLS) {
     const stats = await this.players();
 
     const players = stats.sort((a, b) => ((a[parameter] < b[parameter]) ? 1 : -1));
